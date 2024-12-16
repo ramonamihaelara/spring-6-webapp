@@ -9,6 +9,8 @@ import guru.springframework.spring6webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Set;
+
 @Component
 public class BootstrapData implements CommandLineRunner {
 
@@ -59,7 +61,9 @@ public class BootstrapData implements CommandLineRunner {
         Publisher ramonaPublisherSaved = publisherRepository.save(ramonaPublisher);
 
         dddSaved.setPublisher(ramonaPublisherSaved);
+        ddd.setAuthors(Set.of(ericSaved));
         noEJBSaved.setPublisher(ramonaPublisherSaved);
+        noEJBSaved.setAuthors(Set.of(rodSaved));
 
         authorRepository.save(ericSaved);
         authorRepository.save(rodSaved);
